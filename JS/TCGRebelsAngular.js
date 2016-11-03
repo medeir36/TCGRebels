@@ -36,15 +36,27 @@ app.config(function($routeProvider) {
 });
 
 app.controller("membersController", function($scope) {
-    $scope.members = ["Paul", "Harry", "Scott", "Tori", "Michael", "David", "Sophia", "Moses", "Johnny", "Gio", "Paige"]
+    $scope.members = ["Paul", "Harry", "Scott", "Tori", "Michael", "David", "Sophia", "Moses", "Johnny", "Gio", "Paige", "Andrew", "John", "Vince", "Me", "You"]
 });
 
 app.directive("members", function() {
     return {
         restric: "E",
-        templateUrl: "templates/members.html"
+        templateUrl: "templates/members.html",
+        link: function(scope) {
+           /* _strechY(scope.members.length);*/
+        }    
+    };
+    function _strechY(objectNum) {
+        console.log("objectNum" + objectNum);
+        //use this function to lengthen the y axis when more than 10 people (5 per row) are loaded into the app 15%
+        if(objectNum / 5 > 2){
+            alert("streching "+$(".container").outerHeight(true)+ " by 4");
+            document.getElementById("content-background").style.height = $(".container").outerHeight(true) * 4+"px";
+        }
     };
 });
+
 
 app.directive("home", function() {
     return {
