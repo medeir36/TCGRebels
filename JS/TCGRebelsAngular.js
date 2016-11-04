@@ -36,7 +36,27 @@ app.config(function($routeProvider) {
 });
 
 app.controller("membersController", function($scope) {
-    $scope.members = ["Paul", "Harry", "Scott", "Tori", "Michael", "David", "Sophia", "Moses", "Johnny", "Gio", "Paige", "Andrew", "John", "Vince", "Me", "You"]
+    $scope.members = ["Paul", "Harry", "Scott", "Tori", "Michael", "David", "Sophia", "Moses", "Johnny", "Gio", "Paige", "Andrew", "John", "Vince", "Me", "You"];
+    $scope.$on('ngRepeatFinished', function (temp) {
+        console.log("after page load");
+        console.log("objectNum" + $scope.members.length);
+        //use this function to lengthen the y axis when more than 10 people (5 per row) are loaded into the app 15%
+        if($scope.members.length / 5 > 2){
+            // alert("streching "+$(".container").outerHeight(true)+ " by 4"); //alerted before build but still styles properly as it all DOM nodes hav ebeen built.
+            document.getElementById("content-background").style.height = $(".container").outerHeight(true) * 4+"px";
+        }
+    });
+});
+
+app.directive('onFinishRender', function ($rootScope) {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last) {
+                $rootScope.$broadcast("ngRepeatFinished", { temp: "some value" });
+            }
+        }
+    };
 });
 
 app.directive("members", function() {
