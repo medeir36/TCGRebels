@@ -1,0 +1,22 @@
+{
+  "name": "main",
+  "version": "1.0.0",
+  "description": "Contains everything for the TCGRebels site to function properly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medeir36/TCGRebels.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/medeir36/TCGRebels/issues"
+  },
+  "homepage": "https://github.com/medeir36/TCGRebels#readme",
+  "dependencies": {
+    "mongodb": "^2.2.11"
+  }
+}
